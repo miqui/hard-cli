@@ -1,0 +1,16 @@
+# hard-cli configuration file
+# Copy to ~/.hard-cli.toml or point APP_CONFIG_FILE to this file.
+#
+# Priority: env vars > this file > built-in defaults
+# All keys are optional — only set what you want to override.
+
+app_name    = "hard-cli"
+app_version = "0.1.0"
+log_level   = "INFO"      # DEBUG | INFO | WARNING | ERROR
+json_logs   = false
+debug       = false
+
+# Network defaults (used by `ping host` when flags are omitted)
+default_port    = 80
+default_timeout = 5.0
+default_retries = 3

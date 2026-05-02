@@ -1,0 +1,49 @@
+[project]
+name = "hard-cli"
+version = "0.1.0"
+description = "Hardened CLI template — robust argument handling and error handling patterns"
+requires-python = ">=3.11"
+dependencies = [
+    "typer>=0.15.0",
+    "rich>=13.0.0",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.3.0",   # TomlConfigSettingsSource requires 2.3+
+    "structlog>=25.0.0",
+    "python-dotenv>=1.0.0",
+    "tenacity>=8.2.0",            # Retry / back-off patterns
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "ruff>=0.4.0",
+    "mypy>=1.10.0",
+]
+
+[project.scripts]
+hard-cli = "cli.main:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["cli"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["cli"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
