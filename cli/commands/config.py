@@ -117,7 +117,7 @@ def config_validate(
         # ── TOML syntax check ─────────────────────────────────────────────────────
         try:
             with config_path.open("rb") as fh:
-                data: dict = tomllib.load(fh)
+                data: dict[str, object] = tomllib.load(fh)
         except tomllib.TOMLDecodeError as exc:
             raise ConfigError(
                 f"TOML syntax error in {config_path}",
